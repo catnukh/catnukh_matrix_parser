@@ -13,6 +13,20 @@
 2. Створюється `HashMap<String, Matrix>` для зберігання всіх визначених матриць за їхїніми іменами
 3. Програма по черзі виконує команди з `Vec<Command>` звертаючись до `HashMap` для отримання матриць та виводу результату в консоль
 
+### Як кнонувати собі репозиторій
+1. Ввести команду `git clone` у консолі
+   ```rust
+   git clone
+   ```
+2. Перейдіть у щойно створену папку
+   ```rust
+   cd catnukh_matrix_parser
+   ```
+3. Запуск тестів. Для цього необхідно виконати команду `cargo test`
+   ```rust
+   cargo test
+   ```
+
 ## Граматика (`src/matrix.pest`)
 ```rust
 WHITESPACE = _{ " " | "\n" | "\t" | "\r" }
@@ -28,3 +42,4 @@ mult = { "mul" ~ name_of_matrix ~ "," ~ name_of_matrix }
 scale = { "scale" ~ name_of_matrix ~ "," ~ number }
 operation = { mat_def | add | subtract | mult | scale }
 file = { SOI ~ operation* ~ EOI }
+```
