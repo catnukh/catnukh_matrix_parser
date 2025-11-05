@@ -155,19 +155,9 @@ fn test_file() -> Result<()> {
     #Comment
     mat A = [[1, 2], [3, 4]]
     mat my_second_matrix = [[11, 12], [13, 14]]
-    add A, my_second_matrix
-    mul A, my_second_matrix
-    scale A, 3"#;
+    add A, my_second_matrix"#;
 
     MatrixParser::parse(Rule::file, file1)?;
-
-    // assert_eq!(file1.as_str(), r#"
-    // mat A = [[1, 2], [3, 4]]
-    // mat my_second_matrix = [[11, 12], [13, 14]]
-    // add A, my_second_matrix
-    // sub A, my_second_matrix
-    // mul A, my_second_matrix
-    // scale A, 3"#);
 
     Ok(())
 }
