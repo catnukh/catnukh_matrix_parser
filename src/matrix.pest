@@ -1,0 +1,13 @@
+WHITESPACE = _{ " " | "\n" | "\t" | "\r" }
+COMMENT = _{ "#" ~ (!"\n" ~ ANY)* }
+number = { "-"? ~ ('0'..'9')+ ~ ("." ~ ('0'..'9')+)? ~ !(ASCII_ALPHA | ".") }
+name_of_matrix = { (ASCII_ALPHA | "_") ~ (ASCII_ALPHANUMERIC | "_")* }
+row = { "[" ~ number ~ ("," ~ number)* ~ "]" }
+matrix = { "[" ~ row ~ ("," ~ row)* ~ "]" }
+mat_def = { "mat" ~ name_of_matrix ~ "=" ~ matrix }
+add = { "add" ~ name_of_matrix ~ "," ~ name_of_matrix }
+subtract = { "sub" ~ name_of_matrix ~ "," ~ name_of_matrix }
+mult = { "mul" ~ name_of_matrix ~ "," ~ name_of_matrix }
+scale = { "scale" ~ name_of_matrix ~ "," ~ number }
+operation = { mat_def | add | subtract | mult | scale }
+file = { SOI ~ operation* ~ EOI }
