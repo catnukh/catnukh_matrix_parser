@@ -4,6 +4,13 @@ version = "0.1.0"
 edition = "2024"
 description = "Matrix operations parser for eeducational purpose"
 license = "MIT"
+authors = ["catnukh <katenychl450@gmail.com>"]
+repository = "https://github.com/catnukh/catnukh_matrix_parser"
+homepage = "https://github.com/catnukh/catnukh_matrix_parser"
+documentation = "https://docs.rs/catnukh_matrix_parser"
+readme = "README.md"
+keywords = ["parser", "matrix", "education", "cli"]
+categories = ["command-line-utilities", "parsing"]
 
 [dependencies]
 anyhow = "1.0.100"
