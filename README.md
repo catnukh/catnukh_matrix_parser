@@ -43,3 +43,4 @@ scale = { "scale" ~ name_of_matrix ~ "," ~ number }
 operation = { mat_def | add | subtract | mult | scale }
 file = { SOI ~ operation* ~ EOI }
 ```
+[Crates.io](https://crates.io/crates/catnukh_matrix_parser)
