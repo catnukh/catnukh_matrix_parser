@@ -1,0 +1,3 @@
+# Test scale
+mat A = [[1, 2], [3, 4]]
+scale A, 3.4

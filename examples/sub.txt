@@ -1,0 +1,4 @@
+# Test subtraction
+mat B = [[5, 6], [7, 8]]
+mat my_third_matrix = [[9, 10], [11, 12]]
+sub B, my_third_matrix

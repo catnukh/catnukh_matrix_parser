@@ -1,0 +1,4 @@
+# Test multiplication
+mat A = [[1, 2], [3, 4]]
+mat my_third_matrix = [[9, 10], [11, 12]]
+mul A, my_third_matrix

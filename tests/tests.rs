@@ -155,9 +155,16 @@ fn test_file() -> Result<()> {
     #Comment
     mat A = [[1, 2], [3, 4]]
     mat my_second_matrix = [[11, 12], [13, 14]]
-    add A, my_second_matrix"#;
+    add A, my_second_matrix
+    "#;
 
     MatrixParser::parse(Rule::file, file1)?;
+
+    let file2 = r#"
+    A = [[1, 2], [3, 4]]
+    scale A, 3, mat my_second_matrix = [[0]]"#;
+    let invalid_file2 = MatrixParser::parse(Rule::file, file2);
+    assert_eq!(invalid_file2.is_err(), true);
 
     Ok(())
 }
