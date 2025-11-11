@@ -4,13 +4,17 @@ use pest::Parser;
 
 #[test]
 fn test_number() -> Result<()> {
-    let num1 = MatrixParser::parse(Rule::number, "123.456")?.next().unwrap();
+    let num1 = MatrixParser::parse(Rule::number, "123.456")?
+        .next()
+        .unwrap();
     assert_eq!(num1.as_str(), "123.456");
 
     let num2 = MatrixParser::parse(Rule::number, "-123")?.next().unwrap();
     assert_eq!(num2.as_str(), "-123");
 
-    let num3 = MatrixParser::parse(Rule::number, "-123.456")?.next().unwrap();
+    let num3 = MatrixParser::parse(Rule::number, "-123.456")?
+        .next()
+        .unwrap();
     assert_eq!(num3.as_str(), "-123.456");
 
     let not_num1 = MatrixParser::parse(Rule::number, "abc");
@@ -27,10 +31,14 @@ fn test_number() -> Result<()> {
 
 #[test]
 fn test_name() -> Result<()> {
-    let a = MatrixParser::parse(Rule::name_of_matrix, "A")?.next().unwrap();
+    let a = MatrixParser::parse(Rule::name_of_matrix, "A")?
+        .next()
+        .unwrap();
     assert_eq!(a.as_str(), "A");
 
-    let my_matrix_1 = MatrixParser::parse(Rule::name_of_matrix, "my_matrix_1")?.next().unwrap();
+    let my_matrix_1 = MatrixParser::parse(Rule::name_of_matrix, "my_matrix_1")?
+        .next()
+        .unwrap();
     assert_eq!(my_matrix_1.as_str(), "my_matrix_1");
 
     let empty = MatrixParser::parse(Rule::name_of_matrix, "");
@@ -47,7 +55,9 @@ fn test_row() -> Result<()> {
     let row1 = MatrixParser::parse(Rule::row, "[1, 2, 3]")?.next().unwrap();
     assert_eq!(row1.as_str(), "[1, 2, 3]");
 
-    let row2 = MatrixParser::parse(Rule::row, "[123.456, -78]")?.next().unwrap();
+    let row2 = MatrixParser::parse(Rule::row, "[123.456, -78]")?
+        .next()
+        .unwrap();
     assert_eq!(row2.as_str(), "[123.456, -78]");
 
     let empty_row = MatrixParser::parse(Rule::row, "[]");
@@ -67,10 +77,14 @@ fn test_row() -> Result<()> {
 
 #[test]
 fn test_matrix() -> Result<()> {
-    let matrix1 = MatrixParser::parse(Rule::matrix, "[[1, 2, 3], [2, 4, 5]]")?.next().unwrap();
+    let matrix1 = MatrixParser::parse(Rule::matrix, "[[1, 2, 3], [2, 4, 5]]")?
+        .next()
+        .unwrap();
     assert_eq!(matrix1.as_str(), "[[1, 2, 3], [2, 4, 5]]");
 
-    let matrix2 = MatrixParser::parse(Rule::matrix, "[[1, 2, 3], [2, 5]]")?.next().unwrap();
+    let matrix2 = MatrixParser::parse(Rule::matrix, "[[1, 2, 3], [2, 5]]")?
+        .next()
+        .unwrap();
     assert_eq!(matrix2.as_str(), "[[1, 2, 3], [2, 5]]");
 
     let matrix3 = MatrixParser::parse(Rule::matrix, "[[1]]")?.next().unwrap();
@@ -84,10 +98,12 @@ fn test_matrix() -> Result<()> {
 
 #[test]
 fn test_mat_def() -> Result<()> {
-    let mat_a = MatrixParser::parse(Rule::mat_def, "mat A = [[1, 2, 3], [2, 4, 5]]")?.next().unwrap();
+    let mat_a = MatrixParser::parse(Rule::mat_def, "mat A = [[1, 2, 3], [2, 4, 5]]")?
+        .next()
+        .unwrap();
     assert_eq!(mat_a.as_str(), "mat A = [[1, 2, 3], [2, 4, 5]]");
 
-    let invalid_mat_a =  MatrixParser::parse(Rule::mat_def, "mat A = [[1, 2, 3] [2, 4, 5]]");
+    let invalid_mat_a = MatrixParser::parse(Rule::mat_def, "mat A = [[1, 2, 3] [2, 4, 5]]");
     assert_eq!(invalid_mat_a.is_err(), true);
 
     Ok(())
@@ -109,7 +125,9 @@ fn test_add() -> Result<()> {
 
 #[test]
 fn test_sub() -> Result<()> {
-    let sub1 = MatrixParser::parse(Rule::subtract, "sub A, B")?.next().unwrap();
+    let sub1 = MatrixParser::parse(Rule::subtract, "sub A, B")?
+        .next()
+        .unwrap();
     assert_eq!(sub1.as_str(), "sub A, B");
 
     let invalid_sub1 = MatrixParser::parse(Rule::subtract, "add A, B");
@@ -137,7 +155,9 @@ fn test_mult() -> Result<()> {
 
 #[test]
 fn test_scale() -> Result<()> {
-    let scale1 = MatrixParser::parse(Rule::scale, "scale A, 3")?.next().unwrap();
+    let scale1 = MatrixParser::parse(Rule::scale, "scale A, 3")?
+        .next()
+        .unwrap();
     assert_eq!(scale1.as_str(), "scale A, 3");
 
     let invalid_scale1 = MatrixParser::parse(Rule::scale, "add A, 3");
